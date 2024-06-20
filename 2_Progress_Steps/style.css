@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+/* The :root selector in CSS is used to define custom properties (also known as CSS variables) that 
+can be applied throughout the document. These properties are particularly useful for maintaining 
+consistent styling and making it easier to update styles globally. */   
+:root{
+    --line-border-fill:#3498db; 
+    --line-border-empty:#e0e0e0;
+}
+
+/* Values of box-sizing
+
+    content-box (default)
+        This is the default value. 
+        The width and height of an element only include the content. 
+        Padding, border, and margin are not included in the width and height.
+        For example, if an element has width: 200px and padding: 20px, the total width of the 
+            element will be 240px (200px + 20px on the left + 20px on the right).
+
+    border-box
+        The width and height include the content, padding, and border, but not the margin.
+        For example, if an element has width: 200px, padding: 20px, and border: 10px solid, 
+            the content area will adjust to fit within the specified 200px, including padding and border. 
+            The total width remains 200px. 
+*/
+*{
+    box-sizing: border-box;
+}
+/* 
+The overflow property in CSS controls what happens to content that is too large to fit within an element's box. It defines how content should be handled when it exceeds the dimensions of its container.
+Values of overflow
+
+    visible (default)
+        The overflow is not clipped. The content will be rendered outside the element's box.
+    
+    hidden
+    The overflow is clipped, and the rest of the content will be invisible.
+
+    scroll
+    The overflow is clipped, but a scrollbar is added to view the rest of the content.
+
+    auto
+    If the overflow is clipped, a scrollbar should be added to see the rest of the content.
+*/
+
+body{
+    background-color: #f6f7fb;
+    font-family: 'Roboto' , 'sans-serif';
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    height:100vh;
+    overflow:hidden;
+    margin:0;
+}
+
+.container{
+    text-align:center;
+    /* display:flex;
+    width:90vw; */
+}
+
+.progress-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width:350px;
+}
+
+/* 
+The transform: translateY(-50%); property in CSS is used to move an element vertically relative to 
+its current position by 50% of its own height. This transformation is applied in 
+relation to the element's size, not its parent container or any other reference.
+
+One common use case for transform: translateY(-50%); is centering an element vertically. 
+It is often combined with other CSS properties to achieve perfect vertical centering.
+
+*/
+
+.progress-container::before {
+    content: '';
+    background-color:var(--line-border-empty);
+    position: absolute;
+    top:50%;
+    left:0;
+    transform: translateY(-50%);
+    height:4px;
+    width:100%;
+    z-index:-1;
+}
+
+.progress {
+    background-color:var(--line-border-fill);
+    position: absolute;
+    top:50%;
+    left:0;
+    transform: translateY(-50%);
+    height:4px;
+    /* change width via js */
+    width:0%;  
+    z-index:-1;
+    transform: 0.4s ease;
+
+}
+
+
+
+.circle{
+    background-color: white;
+    color:#999;
+    border-radius: 50%;
+    height:30px;
+    width:30px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border:3px solid var(--line-border-empty);
+    transition: .4s ease ;
+}
+
+.circle.active{
+    border-color: var(--line-border-fill);
+}
+
+.btn{
+    background-color: var(--line-border-fill);
+    color:white;
+    border:0;
+    border-radius:6px;
+    cursor:pointer;
+    font-family: inherit;
+    padding:8px 30px;
+    margin:5px;
+    font-size: 14px;
+}
+
+.btn:active{
+    transform: scale(0.98);
+}
+
+/* 
+The CSS property outline: 0; (or equivalently outline: none;) is used to remove the outline of an element.
+What is an Outline?
+
+An outline is a line drawn around an element, outside the border, to make the element stand out. 
+Outlines are typically used by browsers to highlight elements that are focused, 
+such as when a user navigates to a form input field using the keyboard.
+Purpose of outline: 0;
+
+    Remove Default Browser Outline: When a user interacts with an element, 
+            especially form elements like input fields, buttons, and links, browsers 
+            typically add an outline to indicate focus. Setting outline: 0;
+             removes this default outline.
+
+    Custom Focus Styles: Developers might remove the outline to apply custom focus styles 
+        using other properties like box-shadow or border. This can create a more 
+        aesthetically pleasing or brand-consistent design while still indicating focus.
+
+*/
+
+.btn-focus{
+    outline:0;
+}
+
+.btn:disabled{
+    background-color: var(--line-border-empty);
+    cursor:not-allowed;
+
+}
+
+
+
+
+
+
+
+
+
+
+
